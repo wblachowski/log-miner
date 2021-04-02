@@ -27,7 +27,7 @@ export default function AlertDialog() {
       <DialogTitle id="alert-dialog-title">Error</DialogTitle>
       <DialogContent>
         <DialogContentText id="alert-dialog-description">
-          Something went wrong.
+          An error occured while processing the file.
         </DialogContentText>
       </DialogContent>
       <DialogActions>
