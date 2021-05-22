@@ -1,13 +1,15 @@
-import React from "react";
-import { useSelector } from "react-redux";
-
-import { getClusters } from "../../selectors";
-
+import React, { useEffect } from "react";
 import BubbleChart from "../Chart/BubbleChart";
 import LogList from "../LogList";
+import { withRouter } from "react-router-dom";
 
-const LogPresenter = () => {
-  const logs = useSelector(getClusters);
+const LogPresenter = (state) => {
+  const logs = state?.location?.state?.logs;
+
+  useEffect(() => {
+    console.log("PRESENTER USE EFFECT");
+  }, []);
+
   return logs ? (
     <>
       <BubbleChart data={logs} />
@@ -18,4 +20,4 @@ const LogPresenter = () => {
   );
 };
 
-export default LogPresenter;
+export default withRouter(LogPresenter);

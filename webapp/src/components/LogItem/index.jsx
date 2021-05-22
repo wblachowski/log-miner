@@ -121,7 +121,6 @@ const LogItem = ({ log }) => {
   const myRef = useRef(null);
   const executeScroll = () => scrollToRef(myRef);
   const { clusterClickedId, onChart } = useSelector(getClusterClicked);
-  console.log({ clusterClickedId, onChart });
   const dispatch = useDispatch();
 
   const handleChange = () => {

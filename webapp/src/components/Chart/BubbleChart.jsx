@@ -24,10 +24,10 @@ const BubbleChart = ({ data: logs }) => {
 
   const maxCount = Math.max(...logs.map((log) => log.count));
   const minCount = Math.min(...logs.map((log) => log.count));
-  const parsedData = _.sortBy(logs.map((log) =>
-    transformToPoint(log, minCount, maxCount)
-  ),'r');
-  
+  const parsedData = _.sortBy(
+    logs.map((log) => transformToPoint(log, minCount, maxCount)),
+    "r"
+  );
 
   const data = {
     labels: ["Clusters"],
@@ -108,8 +108,6 @@ const BubbleChart = ({ data: logs }) => {
       ],
     },
   };
-
-  console.log(logs);
 
   return <Bubble ref={chartRef} data={data} options={options} />;
 };
