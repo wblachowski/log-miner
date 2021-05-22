@@ -4,13 +4,15 @@ import BubbleChart from "../Chart/BubbleChart";
 import LogList from "../LogList";
 import { withRouter } from "react-router-dom";
 import { stopLoading } from "../../actions/actionCreators";
+import { useHistory } from "react-router-dom";
 
 const LogPresenter = (state) => {
   const logs = state?.location?.state?.logs;
+  const history = useHistory();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(stopLoading());
+    logs ? dispatch(stopLoading()) : history.push("/");
   }, [logs]);
 
   return logs ? (
