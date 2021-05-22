@@ -1,20 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { createBrowserHistory } from "history";
-import { Router, Route, Switch, Redirect } from "react-router-dom";
-import ErrorDialog from "./components/ErrorDialog";
-
 import { Provider } from "react-redux";
 import configureStore from "./configureStore";
-
-import "./index.css";
-import Landing from "./components/Landing";
-import LogPresenter from "./components/LogPresenter";
 import Main from "./views/Main";
+import "./index.css";
 import * as serviceWorker from "./serviceWorker";
 
 const store = configureStore();
-
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>

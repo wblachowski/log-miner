@@ -16,7 +16,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 const Landing = () => {
-  const classes = useStyles();
   const dispatch = useDispatch();
   const history = useHistory();
   const processFile = (file) => {
