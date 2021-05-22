@@ -26,7 +26,7 @@ const BubbleChart = ({ data: logs }) => {
   const minCount = Math.min(...logs.map((log) => log.count));
   const parsedData = _.sortBy(logs.map((log) =>
     transformToPoint(log, minCount, maxCount)
-  ),'r').reverse();
+  ),'r');
   
 
   const data = {
