@@ -7,7 +7,7 @@ import re
 
 
 class Cluster():
-    def ___init__(self, pattern, count, logs, position):
+    def __init__(self, pattern, count, logs, position):
         self.pattern = pattern
         self.count = count
         self.logs = logs
@@ -28,7 +28,7 @@ def get_clusters(text):
     return [Cluster(pattern, cluster.count, cluster.logs, position) for pattern, cluster, position in zip(patterns, clusters, positions)]
 
 
-def __preprocess_patterns(clusters):
+def _preprocess_patterns(clusters):
     to_remove = ['<timestamp>', '<IP>', '<URL>', '<path>',
                  '<instance_id>', '<number>', '---', '[', ']', '(', ')']
     to_replace_with_space = ['.', ',', '=']
@@ -43,7 +43,7 @@ def __preprocess_patterns(clusters):
     return patterns
 
 
-def __get_positions(patterns):
+def _get_positions(patterns):
     tfidf = TfidfVectorizer().fit_transform(patterns)
 
     cosine_similarities = cosine_similarity(tfidf, tfidf)

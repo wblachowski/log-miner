@@ -3,6 +3,7 @@ import { Bubble } from "react-chartjs-2";
 import { useDispatch } from "react-redux";
 import { clusterClicked } from "../../actions/actionCreators";
 import wrap from "word-wrap";
+import _ from "lodash";
 
 const transformToPoint = (log, minCount, maxCount) => {
   let {
@@ -23,9 +24,10 @@ const BubbleChart = ({ data: logs }) => {
 
   const maxCount = Math.max(...logs.map((log) => log.count));
   const minCount = Math.min(...logs.map((log) => log.count));
-  const parsedData = logs.map((log) =>
+  const parsedData = _.sortBy(logs.map((log) =>
     transformToPoint(log, minCount, maxCount)
-  );
+  ),'r').reverse();
+  
 
   const data = {
     labels: ["Clusters"],

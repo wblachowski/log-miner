@@ -2,7 +2,6 @@ from flask import Flask, request, jsonify
 from flask_cors import cross_origin
 from clustering import get_clusters
 import json
-import requests
 
 app = Flask(__name__)
 
