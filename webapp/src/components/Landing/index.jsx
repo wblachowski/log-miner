@@ -6,7 +6,7 @@ import { displayError } from "../../actions/actionCreators";
 import { makeStyles } from "@material-ui/core/styles";
 import { withRouter } from "react-router-dom";
 import { URL } from "../../constants";
-import { startLoading } from "../../actions/actionCreators";
+import { startLoading, stopLoading } from "../../actions/actionCreators";
 import axios from "axios";
 
 const useStyles = makeStyles((theme) => ({
@@ -29,6 +29,7 @@ const Landing = () => {
         history.push({ pathname: "/result", state: { logs: data } });
       })
       .catch(() => {
+        dispatch(stopLoading());
         dispatch(displayError());
       });
   };
