@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { Container } from "@material-ui/core";
+import Backdrop from "@material-ui/core/Backdrop";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import DragAndDrop from "../../components/DragAndDrop";
 
 import { displayError } from "../../actions/actionCreators";
 import { makeStyles } from "@material-ui/core/styles";
 import { withRouter } from "react-router-dom";
 import { URL } from "../../constants";
-import { startLoading, stopLoading } from "../../actions/actionCreators";
 import axios from "axios";
 
 const useStyles = makeStyles((theme) => ({
@@ -16,12 +19,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 const Landing = () => {
+  const classes = useStyles();
+  const [loading, setLoading] = useState(false);
+
   const dispatch = useDispatch();
   const history = useHistory();
   const processFile = (file) => {
     var formData = new FormData();
     formData.append("file", file);
-    dispatch(startLoading());
+    setLoading(true);
     axios
       .post(URL.CLUSTER, formData)
       .then((res) => {
@@ -29,7 +35,7 @@ const Landing = () => {
         history.push({ pathname: "/result", state: { logs: data } });
       })
       .catch(() => {
-        dispatch(stopLoading());
+        setLoading(false);
         dispatch(displayError());
       });
   };
@@ -39,13 +45,25 @@ const Landing = () => {
     processFile(file);
   };
 
+  const handleFileDrop = (files) => {
+    var file = files[0];
+    processFile(file);
+  };
+
   return (
-    <>
-      <form>
-        <input type="file" onChange={handleFileUpload} />
-      </form>
-      <h1>LogMiner</h1>
-    </>
+    <DragAndDrop handleDrop={handleFileDrop}>
+      <Container>
+        <Container>
+          <form>
+            <input type="file" onChange={handleFileUpload} />
+          </form>
+          <h1>LogMiner</h1>
+          <Backdrop className={classes.backdrop} open={!!loading}>
+            <CircularProgress color="inherit" />
+          </Backdrop>
+        </Container>
+      </Container>
+    </DragAndDrop>
   );
 };
 
