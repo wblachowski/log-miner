@@ -4,7 +4,7 @@ import LogPresenter from "../components/LogPresenter";
 import Landing from "../components/Landing";
 import ErrorDialog from "../components/ErrorDialog";
 import { createBrowserHistory } from "history";
-import { Router, Route, Switch, Redirect } from "react-router-dom";
+import { Router, Route, Switch } from "react-router-dom";
 
 const Dashboard = () => {
   return (
