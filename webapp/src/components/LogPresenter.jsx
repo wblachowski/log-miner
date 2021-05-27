@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import BubbleChart from "../Chart/BubbleChart";
-import LogList from "../LogList";
+import BubbleChart from "./BubbleChart";
+import LogList from "./LogList";
 import { withRouter } from "react-router-dom";
-import { stopLoading } from "../../actions/actionCreators";
+import { stopLoading } from "../actions/actionCreators";
 import { useHistory } from "react-router-dom";
 
 const LogPresenter = (state) => {

@@ -6,10 +6,10 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import { useSelector, useDispatch } from "react-redux";
-import { hideError } from "../../actions/actionCreators";
-import { getError } from "../../selectors";
+import { hideError } from "../actions/actionCreators";
+import { getError } from "../selectors";
 
-export default function Loading() {
+export default function ErrorDialog() {
   const dispatch = useDispatch();
   const isError = useSelector(getError);
 

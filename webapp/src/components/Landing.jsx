@@ -4,12 +4,12 @@ import { useHistory } from "react-router-dom";
 import { Container } from "@material-ui/core";
 import Backdrop from "@material-ui/core/Backdrop";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import DragAndDrop from "../../components/DragAndDrop";
+import DragAndDrop from "./DragAndDrop";
 
-import { displayError } from "../../actions/actionCreators";
+import { displayError } from "../actions/actionCreators";
 import { makeStyles } from "@material-ui/core/styles";
 import { withRouter } from "react-router-dom";
-import { URL } from "../../constants";
+import { URL } from "../constants";
 import axios from "axios";
 
 const useStyles = makeStyles((theme) => ({

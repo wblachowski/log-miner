@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { Bubble } from "react-chartjs-2";
 import { useDispatch } from "react-redux";
-import { clusterClicked } from "../../actions/actionCreators";
+import { clusterClicked } from "../actions/actionCreators";
 import wrap from "word-wrap";
 import _ from "lodash";
 

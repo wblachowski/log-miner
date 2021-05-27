@@ -1,5 +1,5 @@
 import React from "react";
-import LogItem from "../LogItem";
+import LogItem from "./LogItem";
 import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 
